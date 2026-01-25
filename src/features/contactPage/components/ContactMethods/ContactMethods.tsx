@@ -57,7 +57,7 @@ export const ContactMethods: React.FC<ContactMethodsProps> = ({
                       flexShrink: 0,
                     }}
                   >
-                    <IconComponent sx={{ fontSize: 24, color: "primary.main" }} />
+                    <IconComponent />
                   </Box>
                   <Box sx={{ flex: 1 }}>
                     <Typography

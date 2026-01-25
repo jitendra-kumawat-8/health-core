@@ -3,7 +3,7 @@ import { Box, Container, BoxProps } from "@mui/material";
 
 export interface SectionProps extends BoxProps {
   children: React.ReactNode;
-  maxWidth?: "xs" | "sm" | "md" | "lg" | "xl" | false;
+  maxWidth?: "xs" | "sm" | "md" | "lg" | "xl" ;
   backgroundColor?: string;
 }
 

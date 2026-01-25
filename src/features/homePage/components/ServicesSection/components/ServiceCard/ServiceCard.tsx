@@ -30,7 +30,7 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service }) => {
             mb: 2,
           }}
         >
-          <IconComponent sx={{ fontSize: 48, color: "primary.main" }} />
+          <IconComponent />
         </Box>
         <Typography
           variant="h6"

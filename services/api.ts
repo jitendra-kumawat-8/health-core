@@ -1,8 +1,30 @@
 import axios from "axios";
 
-// Create axios instance
+/**
+ * API Client for external backend services
+ * 
+ * Usage:
+ * - If you have an external API backend, set NEXT_PUBLIC_API_URL in .env.local
+ * - Example: NEXT_PUBLIC_API_URL=https://api.example.com
+ * 
+ * For Next.js API routes (like /api/booking/icu), use axios directly with relative paths:
+ * - Example: axios.post("/api/booking/icu", data)
+ */
+
+// Get base URL - only use if NEXT_PUBLIC_API_URL is set (for external APIs)
+const getBaseURL = () => {
+  // If explicitly set, use it (for external backend)
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+  
+  // Default fallback (can be removed if not needed)
+  return "http://localhost:3001/api";
+};
+
+// Create axios instance for external API calls
 const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3001/api",
+  baseURL: getBaseURL(),
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
