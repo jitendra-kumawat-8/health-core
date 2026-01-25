@@ -6,7 +6,7 @@ const fontFamily = {
     '"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
   secondary:
     '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
-  tertiary: '"Georgia", "Times New Roman", "Times", serif',
+  tertiary: '"Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
 };
 
 // Typography variants with only primary, secondary, and tertiary font families
@@ -107,31 +107,31 @@ const typography = {
   },
 };
 
-// Color palette
+// Color palette - Ashokam Homecare theme
 const palette = {
   primary: {
-    main: "#2563EB",
-    light: "#3B82F6",
-    dark: "#1E40AF",
+    main: "#1F7A8C", // Teal blue
+    light: "#2A9DB5",
+    dark: "#185A68",
     contrastText: "#FFFFFF",
   },
   secondary: {
-    main: "#7C3AED",
-    light: "#8B5CF6",
-    dark: "#5B21B6",
+    main: "#4CAF50", // Leaf green
+    light: "#66BB6A",
+    dark: "#388E3C",
     contrastText: "#FFFFFF",
   },
   success: {
-    main: "#10B981",
-    light: "#34D399",
-    dark: "#059669",
+    main: "#4CAF50",
+    light: "#66BB6A",
+    dark: "#388E3C",
     contrastText: "#FFFFFF",
   },
   warning: {
-    main: "#F59E0B",
-    light: "#FBBF24",
-    dark: "#D97706",
-    contrastText: "#FFFFFF",
+    main: "#D4AF37", // Warm gold
+    light: "#E5C158",
+    dark: "#B8941F",
+    contrastText: "#1E2A2F",
   },
   error: {
     main: "#EF4444",
@@ -140,47 +140,49 @@ const palette = {
     contrastText: "#FFFFFF",
   },
   info: {
-    main: "#3B82F6",
-    light: "#60A5FA",
-    dark: "#2563EB",
+    main: "#1F7A8C",
+    light: "#2A9DB5",
+    dark: "#185A68",
     contrastText: "#FFFFFF",
   },
   grey: {
-    50: "#F9FAFB",
-    100: "#F3F4F6",
-    200: "#E5E7EB",
-    300: "#D1D5DB",
-    400: "#9CA3AF",
-    500: "#6B7280",
-    600: "#4B5563",
-    700: "#374151",
-    800: "#1F2937",
-    900: "#111827",
+    50: "#F4F8F9", // Soft background
+    100: "#E6F2F4", // Accent background
+    200: "#D1E5E9",
+    300: "#B8D4DA",
+    400: "#8A9AA5", // Muted text
+    500: "#6B7A85",
+    600: "#4F5D64", // Secondary text
+    700: "#3A4549",
+    800: "#2A3437",
+    900: "#1E2A2F", // Primary text
   },
   text: {
-    primary: "#111827",
-    secondary: "#4B5563",
-    disabled: "#9CA3AF",
+    primary: "#1E2A2F",
+    secondary: "#4F5D64",
+    disabled: "#8A9AA5",
   },
   background: {
     default: "#FFFFFF",
     paper: "#FFFFFF",
+    soft: "#F4F8F9",
+    accent: "#E6F2F4",
   },
-  divider: "#E5E7EB",
+  divider: "#D1E5E9",
 };
 
 const theme = createTheme({
   palette,
   typography,
   shape: {
-    borderRadius: 8,
+    borderRadius: 12,
   },
   spacing: 8,
   components: {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: "8px",
+          borderRadius: "12px",
           textTransform: "none",
           fontWeight: 600,
           fontSize: "14px",
@@ -188,7 +190,7 @@ const theme = createTheme({
           padding: "8px 16px",
           boxShadow: "none",
           "&:hover": {
-            boxShadow: "0 4px 12px rgba(37, 99, 235, 0.15)",
+            boxShadow: "0 4px 12px rgba(31, 122, 140, 0.15)",
           },
         },
         containedPrimary: {
@@ -204,13 +206,13 @@ const theme = createTheme({
           "&:hover": {
             borderColor: palette.primary.dark,
             color: palette.primary.dark,
-            backgroundColor: "rgba(37, 99, 235, 0.04)",
+            backgroundColor: "rgba(31, 122, 140, 0.04)",
           },
         },
         textPrimary: {
           color: palette.primary.main,
           "&:hover": {
-            backgroundColor: "rgba(37, 99, 235, 0.08)",
+            backgroundColor: "rgba(31, 122, 140, 0.08)",
           },
         },
         sizeSmall: {
@@ -229,7 +231,7 @@ const theme = createTheme({
           "& .MuiOutlinedInput-root": {
             borderColor: palette.grey[300],
             fontFamily: fontFamily.primary,
-            borderRadius: "8px",
+            borderRadius: "12px",
             background: palette.background.paper,
             "& .MuiOutlinedInput-input": {
               padding: "12px 16px",
@@ -264,7 +266,7 @@ const theme = createTheme({
           "& .MuiOutlinedInput-root": {
             borderColor: palette.grey[300],
             fontFamily: fontFamily.primary,
-            borderRadius: "8px",
+            borderRadius: "12px",
             "& .MuiOutlinedInput-input": {
               padding: "12px 16px",
               fontSize: "14px",
@@ -306,7 +308,7 @@ const theme = createTheme({
         root: {
           borderRadius: "12px",
           boxShadow:
-            "0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06)",
+            "0 2px 8px rgba(31, 122, 140, 0.08), 0 1px 4px rgba(31, 122, 140, 0.06)",
           border: `1px solid ${palette.grey[200]}`,
         },
       },
@@ -314,7 +316,7 @@ const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          borderRadius: "8px",
+          borderRadius: "12px",
         },
       },
     },

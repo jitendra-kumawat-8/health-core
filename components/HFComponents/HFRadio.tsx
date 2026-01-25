@@ -49,8 +49,9 @@ const HFRadio: React.FC<HFRadioProps> = ({
             </Typography>
           )}
           <RadioGroup {...field} row>
-            {options.map((option) => (
+            {options.map((option, index) => (
               <FormControlLabel
+                key={`${name}-${option.value}-${index}`}
                 value={option.value}
                 control={<Radio />}
                 label={option.label}
