@@ -1,4 +1,4 @@
-## UI / UX Design Document – Health Core Home Page
+## UI / UX Design Document – Ashokam Homecare Home Page
 
 ### 1. Design Philosophy
 

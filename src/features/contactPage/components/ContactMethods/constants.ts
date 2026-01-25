@@ -20,7 +20,7 @@ export const CONTACT_METHODS: ContactMethod[] = [
     id: "email",
     icon: Email,
     label: "Email",
-    value: "support@healthcore.com",
+    value: "support@ashokamhomecare.com",
     description: "Send us a message",
   },
   {

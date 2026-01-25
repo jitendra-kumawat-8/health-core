@@ -1,7 +1,7 @@
 # About Page – Product Requirements Document (PRD)
 
 ## 1. Objective
-The About page should establish **trust, credibility, and clarity** around Health Core.
+The About page should establish **trust, credibility, and clarity** around Ashokam Homecare.
 It explains who we are, what we do, and why users can rely on us.
 
 This is a **trust-building, informational page**, not a conversion-heavy page.

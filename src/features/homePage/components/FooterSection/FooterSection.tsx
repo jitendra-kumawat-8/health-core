@@ -8,7 +8,7 @@ export interface FooterSectionProps {
 }
 
 export const FooterSection: React.FC<FooterSectionProps> = ({
-  companyName = "Health Core",
+  companyName = "Ashokam Homecare",
   currentYear = new Date().getFullYear(),
 }) => {
   const footerLinks = {

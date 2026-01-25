@@ -16,7 +16,7 @@ export interface WhyChooseSectionProps {
 }
 
 export const WhyChooseSection: React.FC<WhyChooseSectionProps> = ({
-  title = "Why choose Health Core",
+  title = "Why choose Ashokam Homecare",
   highlights = HIGHLIGHTS,
 }) => {
   return (

@@ -1,8 +1,8 @@
-## Product Requirements Document – Health Core Home Page
+## Product Requirements Document – Ashokam Homecare Home Page
 
 ### 1. Objective
 
-Build a modern, trust-focused **Home Page** for the Health Core platform inspired by on-demand home healthcare products (like doctor-at-home services).
+Build a modern, trust-focused **Home Page** for the Ashokam Homecare platform inspired by on-demand home healthcare products (like doctor-at-home services).
 
 The goal of the home page is to:
 

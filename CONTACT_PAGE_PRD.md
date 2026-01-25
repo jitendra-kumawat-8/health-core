@@ -1,7 +1,7 @@
 # Contact Page – Product Requirements Document (PRD)
 
 ## 1. Objective
-The Contact page enables users to **comfortably reach Health Core** for:
+The Contact page enables users to **comfortably reach Ashokam Homecare** for:
 - General inquiries
 - Support
 - Booking assistance

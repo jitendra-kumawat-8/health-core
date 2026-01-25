@@ -8,7 +8,7 @@ import {
   Container,
   useScrollTrigger,
 } from "@mui/material";
-import { LocalHospital } from "@mui/icons-material";
+import Image from "next/image";
 import Link from "next/link";
 import { ROUTES } from "../../../constants/routes";
 
@@ -32,8 +32,8 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
         boxShadow: trigger
           ? "0 2px 8px rgba(0,0,0,0.1)"
           : transparent
-          ? "none"
-          : "0 1px 3px rgba(0,0,0,0.05)",
+            ? "none"
+            : "0 1px 3px rgba(0,0,0,0.05)",
         transition: "all 0.3s ease-in-out",
       }}
     >
@@ -51,29 +51,19 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
             sx={{
               display: "flex",
               alignItems: "center",
-              gap: 1,
               textDecoration: "none",
               color: "inherit",
-              mr: { xs: 2, md: 4 },
+
             }}
+
           >
-            <LocalHospital
-              sx={{
-                fontSize: { xs: 28, md: 32 },
-                color: "primary.main",
-              }}
+            <Image
+              src="/assets/logo.png"
+              alt="Ashokam Homecare Logo"
+              width={54}
+              height={72}
+              priority
             />
-            <Typography
-              variant="h6"
-              component="div"
-              sx={{
-                fontWeight: 700,
-                fontSize: { xs: "1.125rem", md: "1.25rem" },
-                display: { xs: "none", sm: "block" },
-              }}
-            >
-              Health Core
-            </Typography>
           </Box>
 
           <Box

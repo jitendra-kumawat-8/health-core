@@ -1,7 +1,7 @@
 {
   "name": "health-core",
   "version": "1.0.0",
-  "description": "Health Core is a comprehensive Next.js application with Material-UI, TypeScript, and component testing",
+  "description": "Ashokam Homecare is a comprehensive Next.js application with Material-UI, TypeScript, and component testing",
   "private": true,
   "scripts": {
     "dev": "next dev",
