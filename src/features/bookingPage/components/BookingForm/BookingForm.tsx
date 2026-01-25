@@ -35,21 +35,21 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSubmitSuccess }) => 
 
   const methods = useForm<BookingFormData>({
     defaultValues: {
-      patientName: "John Doe",
-      patientAge: "45",
-      gender: "Male",
-      diagnosis: "Pneumonia with respiratory distress",
-      icuType: "General",
-      ventilatorRequired: "Yes",
-      oxygenSupportRequired: "Yes",
-      expectedDuration: "5",
-      admissionUrgency: "Within 24 hrs",
-      preferredHospital: "City General Hospital",
-      preferredCity: "Mumbai",
-      contactName: "Jane Doe",
-      phoneNumber: "+919876543210",
-      email: "jane.doe@example.com",
-      additionalNotes: "Patient requires immediate attention. Family available for consultation.",
+      patientName: "",
+      patientAge: "",
+      gender: "",
+      diagnosis: "",
+      icuType: "",
+      ventilatorRequired: "",
+      oxygenSupportRequired: "",
+      expectedDuration: "",
+      admissionUrgency: "",
+      preferredHospital: "",
+      preferredCity: "",
+      contactName: "",
+      phoneNumber: "",
+      email: "",
+      additionalNotes: "",
     },
   });
 
@@ -82,7 +82,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSubmitSuccess }) => 
     } catch (error: any) {
       setSubmitError(
         error.response?.data?.message ||
-          "Failed to submit booking request. Please try again or contact us directly."
+        "Failed to submit booking request. Please try again or contact us directly."
       );
     } finally {
       setIsSubmitting(false);
