@@ -1,4 +1,5 @@
 export const BOOKING_HERO_CONTENT = {
-  headline: "ICU Booking Request",
-  subtext: "Submit your ICU booking request. Our team will review and contact you shortly to coordinate the admission.",
+  headline: "Service Booking Request",
+  subtext:
+    "Submit your service booking request. Our team will review and contact you shortly to coordinate the service.",
 } as const;

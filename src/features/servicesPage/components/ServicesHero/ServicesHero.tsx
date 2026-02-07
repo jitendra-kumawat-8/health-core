@@ -74,7 +74,7 @@ export const ServicesHero: React.FC<ServicesHeroProps> = ({
           component="p"
           sx={{
             fontSize: { xs: "1.125rem", md: "1.25rem" },
-            color: "text.secondary",
+            color: "primary.dark",
             maxWidth: "36rem",
             lineHeight: 1.6,
             fontWeight: 400,

@@ -1,5 +1,6 @@
 import React from "react";
 import { Box } from "@mui/material";
+import Image from "next/image";
 import { Section } from "../../../../components/layout/Section";
 import { HeroContent } from "./components/HeroContent";
 import { HeroActions } from "./components/HeroActions";
@@ -37,23 +38,56 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         },
       }}
     >
+      {/* Background hero image — blended into the section */}
       <Box
         sx={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: { xs: "100%", md: "55%" },
+          pointerEvents: "none",
+          opacity: { xs: 0.15, md: 0.9 },
+          maskImage: {
+            xs: "none",
+            md: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 100%)",
+          },
+          WebkitMaskImage: {
+            xs: "none",
+            md: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 100%)",
+          },
+        }}
+      >
+        <Image
+          src="/assets/hero-booking.png"
+          alt=""
+          fill
+          priority
+          style={{ objectFit: "cover", objectPosition: "center right" }}
+          sizes="(max-width: 768px) 100vw, 55vw"
+        />
+      </Box>
+
+      {/* Content — sits above the image */}
+      <Box
+        sx={{
+          position: "relative",
+          zIndex: 1,
           display: "flex",
           flexDirection: "column",
           alignItems: { xs: "center", md: "flex-start" },
-          maxWidth: { md: "800px" },
+          maxWidth: { md: "560px" },
         }}
       >
         <HeroContent headline={headline} subtext={subtext} />
-          <HeroActions
-            primaryCTA={primaryCTA}
-            secondaryCTA={secondaryCTA}
-            primaryLink={ROUTES.BOOKING}
-            secondaryLink={ROUTES.CONTACT}
-            onPrimaryClick={onBookDoctor}
-            onSecondaryClick={onTalkToUs}
-          />
+        <HeroActions
+          primaryCTA={primaryCTA}
+          secondaryCTA={secondaryCTA}
+          primaryLink={ROUTES.BOOKING}
+          secondaryLink={ROUTES.CONTACT}
+          onPrimaryClick={onBookDoctor}
+          onSecondaryClick={onTalkToUs}
+        />
       </Box>
     </Section>
   );

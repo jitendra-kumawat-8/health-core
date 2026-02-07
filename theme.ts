@@ -6,7 +6,8 @@ const fontFamily = {
     '"Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
   secondary:
     '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
-  tertiary: '"Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
+  tertiary:
+    '"Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif',
 };
 
 // Typography variants with only primary, secondary, and tertiary font families
@@ -257,6 +258,12 @@ const theme = createTheme({
           "& .MuiInputLabel-root.Mui-focused": {
             color: palette.primary.main,
           },
+          "& .MuiIconButton-root": {
+            outline: "none",
+            "&:focus": {
+              outline: "none",
+            },
+          },
         },
       },
     },
@@ -267,18 +274,21 @@ const theme = createTheme({
             borderColor: palette.grey[300],
             fontFamily: fontFamily.primary,
             borderRadius: "12px",
+            background: palette.background.paper,
             "& .MuiOutlinedInput-input": {
               padding: "12px 16px",
               fontSize: "14px",
             },
             "& fieldset": {
               borderColor: palette.grey[300],
+              borderWidth: "1px",
             },
             "&:hover fieldset": {
               borderColor: palette.primary.main,
             },
             "&.Mui-focused fieldset": {
               borderColor: palette.primary.main,
+              borderWidth: "2px",
             },
           },
         },
@@ -498,7 +508,20 @@ const theme = createTheme({
         },
       },
     },
-  },
+    MuiPickersDay: {
+      styleOverrides: {
+        root: {
+          outline: "none",
+          "&:focus": {
+            outline: "none",
+          },
+          "&.Mui-selected:focus": {
+            outline: "none",
+          },
+        },
+      },
+    },
+  } as any,
 });
 
 export default theme;

@@ -129,6 +129,24 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
 
           <Box sx={{ display: "flex", gap: 1, alignItems: "center" }}>
             <Button
+              variant="outlined"
+              component={Link}
+              href={ROUTES.REGISTER}
+              sx={{
+                fontWeight: 600,
+                px: { xs: 2, md: 3 },
+                fontSize: { xs: "0.875rem", md: "1rem" },
+                borderColor: "primary.main",
+                color: "primary.main",
+                "&:hover": {
+                  borderColor: "primary.dark",
+                  bgcolor: "rgba(31, 122, 140, 0.04)",
+                },
+              }}
+            >
+              Register with Us
+            </Button>
+            <Button
               variant="contained"
               component={Link}
               href={ROUTES.BOOKING}
@@ -138,7 +156,7 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
                 fontSize: { xs: "0.875rem", md: "1rem" },
               }}
             >
-              Book a Doctor
+              Book Services
             </Button>
           </Box>
         </Toolbar>

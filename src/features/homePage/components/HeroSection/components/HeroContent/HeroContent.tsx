@@ -21,7 +21,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ headline, subtext }) =
         sx={{
           fontSize: { xs: "2.5rem", sm: "3rem", md: "3.5rem" },
           fontWeight: 700,
-          color: "text.primary",
+          color: "primary.main",
           mb: 3,
         }}
       >
@@ -33,7 +33,7 @@ export const HeroContent: React.FC<HeroContentProps> = ({ headline, subtext }) =
         sx={{
           fontSize: { xs: "1.125rem", md: "1.25rem" },
           fontWeight: 400,
-          color: "text.secondary",
+          color: "primary.dark",
           maxWidth: { md: "600px" },
         }}
       >

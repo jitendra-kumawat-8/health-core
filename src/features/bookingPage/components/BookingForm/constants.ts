@@ -22,6 +22,15 @@ export const GENDER_OPTIONS = [
   { value: "Other", label: "Other" },
 ];
 
+export const SERVICE_TYPE_OPTIONS = [
+  { value: "Physiotherapy", label: "Physiotherapy" },
+  { value: "Doctor Visit", label: "Doctor Visit" },
+  { value: "Nursing Care", label: "Nursing Care" },
+  { value: "Dresser", label: "Dresser" },
+  { value: "ICU at Home", label: "ICU at Home" },
+  { value: "Care and Wellness", label: "Care and Wellness" },
+];
+
 export const CITIES = [
   { value: "Mumbai", label: "Mumbai" },
   { value: "Delhi", label: "Delhi" },
@@ -37,15 +46,12 @@ export interface BookingFormData {
   patientName: string;
   patientAge: string;
   gender: string;
+  serviceType: string;
   diagnosis: string;
-  icuType: string;
-  ventilatorRequired: string;
-  oxygenSupportRequired: string;
-  expectedDuration: string;
-  admissionUrgency: string;
+  visitDate: string;
+  visitTime: string;
   preferredHospital: string;
-  preferredCity: string;
-  contactName: string;
+  address: string;
   phoneNumber: string;
   email: string;
   additionalNotes: string;

@@ -1,20 +1,17 @@
-// ICU Booking API endpoint - writes to Google Sheets
+// Booking API endpoint - writes to Google Sheets
 import type { NextApiRequest, NextApiResponse } from "next";
 import { appendBookingToSheet, type BookingRow } from "../../../src/lib/googleSheets";
 
-export interface ICUBookingRequest {
+export interface BookingRequest {
   patientName: string;
   patientAge: string;
   gender: string;
+  serviceType: string;
   diagnosis: string;
-  icuType: string;
-  ventilatorRequired: string;
-  oxygenSupportRequired: string;
-  expectedDuration: string;
-  admissionUrgency: string;
+  visitDate: string;
+  visitTime: string;
   preferredHospital: string;
-  preferredCity: string;
-  contactName: string;
+  address: string;
   phoneNumber: string;
   email: string;
   additionalNotes: string;
@@ -29,25 +26,21 @@ export default async function handler(
   }
 
   try {
-    const bookingData: ICUBookingRequest = req.body;
+    const bookingData: BookingRequest = req.body;
 
     // Validate required fields
     const requiredFields = [
       "patientName",
       "patientAge",
       "gender",
+      "serviceType",
       "diagnosis",
-      "icuType",
-      "ventilatorRequired",
-      "oxygenSupportRequired",
-      "admissionUrgency",
-      "preferredCity",
-      "contactName",
+      "address",
       "phoneNumber",
     ];
 
     const missingFields = requiredFields.filter(
-      (field) => !bookingData[field as keyof ICUBookingRequest]
+      (field) => !bookingData[field as keyof BookingRequest]
     );
 
     if (missingFields.length > 0) {
@@ -56,21 +49,18 @@ export default async function handler(
       });
     }
 
-    // Prepare data for Google Sheets (matching Excel column order from PRD)
+    // Prepare data for Google Sheets
     const bookingRow: BookingRow = {
       Timestamp: new Date().toISOString(),
       "Patient Name": bookingData.patientName,
       "Patient Age": bookingData.patientAge,
       Gender: bookingData.gender,
+      "Service Type": bookingData.serviceType,
       Diagnosis: bookingData.diagnosis,
-      "ICU Type": bookingData.icuType,
-      "Ventilator Required": bookingData.ventilatorRequired,
-      "Oxygen Support Required": bookingData.oxygenSupportRequired,
-      "Expected Duration (Days)": bookingData.expectedDuration || "",
-      "Admission Urgency": bookingData.admissionUrgency,
+      "Visit Date": bookingData.visitDate || "",
+      "Visit Time": bookingData.visitTime || "",
       "Preferred Hospital": bookingData.preferredHospital || "",
-      "Preferred City": bookingData.preferredCity,
-      "Contact Name": bookingData.contactName,
+      Address: bookingData.address,
       "Phone Number": bookingData.phoneNumber,
       Email: bookingData.email || "",
       "Additional Notes": bookingData.additionalNotes || "",

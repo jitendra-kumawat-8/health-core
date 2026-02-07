@@ -49,7 +49,7 @@ export const BookingHero: React.FC<BookingHeroProps> = ({
             fontSize: { xs: "2.5rem", sm: "3rem", md: "3.5rem" },
             fontWeight: 700,
             mb: 3,
-            color: "text.primary",
+            color: "primary.main",
             lineHeight: 1.2,
           }}
         >
@@ -60,7 +60,7 @@ export const BookingHero: React.FC<BookingHeroProps> = ({
           component="p"
           sx={{
             fontSize: { xs: "1.125rem", md: "1.25rem" },
-            color: "text.secondary",
+            color: "primary.dark",
             maxWidth: "36rem",
             lineHeight: 1.6,
             fontWeight: 400,

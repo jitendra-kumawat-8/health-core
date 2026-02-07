@@ -92,7 +92,7 @@ export const ServicesGridSection: React.FC<ServicesGridSectionProps> = ({
                       mb: 2,
                     }}
                   >
-                    <IconComponent sx={{ fontSize: 40, color: "primary.main" }} />
+                    <IconComponent />
                   </Box>
                   <Typography
                     variant="h6"

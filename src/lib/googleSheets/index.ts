@@ -5,21 +5,18 @@ import { google } from "googleapis";
 export const GOOGLE_SHEET_ID = "18G6ewFA80FKaHqFX9q4eezvYXwZM82ea-JpdNJ3Hv08";
 export const SHEET_NAME = "ICU_Bookings"; // Default sheet name - will use first sheet if this doesn't exist
 
-// Expected column headers in exact order (from PRD)
+// Expected column headers in exact order
 export const EXPECTED_HEADERS = [
   "Timestamp",
   "Patient Name",
   "Patient Age",
   "Gender",
+  "Service Type",
   "Diagnosis",
-  "ICU Type",
-  "Ventilator Required",
-  "Oxygen Support Required",
-  "Expected Duration (Days)",
-  "Admission Urgency",
+  "Visit Date",
+  "Visit Time",
   "Preferred Hospital",
-  "Preferred City",
-  "Contact Name",
+  "Address",
   "Phone Number",
   "Email",
   "Additional Notes",
@@ -30,15 +27,12 @@ export interface BookingRow {
   "Patient Name": string;
   "Patient Age": string;
   Gender: string;
+  "Service Type": string;
   Diagnosis: string;
-  "ICU Type": string;
-  "Ventilator Required": string;
-  "Oxygen Support Required": string;
-  "Expected Duration (Days)": string;
-  "Admission Urgency": string;
+  "Visit Date": string;
+  "Visit Time": string;
   "Preferred Hospital": string;
-  "Preferred City": string;
-  "Contact Name": string;
+  Address: string;
   "Phone Number": string;
   Email: string;
   "Additional Notes": string;
@@ -50,7 +44,10 @@ export interface BookingRow {
  */
 async function getSheetsClient() {
   // Service Account Authentication (Required)
-  if (process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL && process.env.GOOGLE_PRIVATE_KEY) {
+  if (
+    process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL &&
+    process.env.GOOGLE_PRIVATE_KEY
+  ) {
     const auth = new google.auth.JWT({
       email: process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL,
       key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
@@ -74,16 +71,18 @@ async function getSheetsClient() {
 
   throw new Error(
     "Google Sheets authentication not configured. Please set either:\n" +
-    "1. GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_PRIVATE_KEY, or\n" +
-    "2. GOOGLE_SERVICE_ACCOUNT_KEY_FILE (path to service account JSON file)\n\n" +
-    "See env.example for configuration details."
+      "1. GOOGLE_SERVICE_ACCOUNT_EMAIL and GOOGLE_PRIVATE_KEY, or\n" +
+      "2. GOOGLE_SERVICE_ACCOUNT_KEY_FILE (path to service account JSON file)\n\n" +
+      "See env.example for configuration details."
   );
 }
 
 /**
  * Append a new row to the Google Sheet
  */
-export async function appendBookingToSheet(bookingData: BookingRow): Promise<void> {
+export async function appendBookingToSheet(
+  bookingData: BookingRow
+): Promise<void> {
   try {
     const sheets = await getSheetsClient();
     const actualSheetName = await getActualSheetName();
@@ -97,15 +96,12 @@ export async function appendBookingToSheet(bookingData: BookingRow): Promise<voi
       bookingData["Patient Name"],
       bookingData["Patient Age"],
       bookingData.Gender,
+      bookingData["Service Type"],
       bookingData.Diagnosis,
-      bookingData["ICU Type"],
-      bookingData["Ventilator Required"],
-      bookingData["Oxygen Support Required"],
-      bookingData["Expected Duration (Days)"],
-      bookingData["Admission Urgency"],
+      bookingData["Visit Date"],
+      bookingData["Visit Time"],
       bookingData["Preferred Hospital"],
-      bookingData["Preferred City"],
-      bookingData["Contact Name"],
+      bookingData.Address,
       bookingData["Phone Number"],
       bookingData.Email,
       bookingData["Additional Notes"],
@@ -147,7 +143,7 @@ async function getActualSheetName(): Promise<string> {
     });
 
     if (spreadsheet.data.sheets && spreadsheet.data.sheets.length > 0) {
-      // First, try to find ICU_Bookings sheet
+      // First, try to find Bookings sheet
       const icuSheet = spreadsheet.data.sheets.find(
         (sheet) => sheet.properties?.title === SHEET_NAME
       );
