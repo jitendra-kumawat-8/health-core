@@ -10,7 +10,7 @@ const TeamCarousel = dynamic(() => import("./TeamCarousel"), { ssr: false });
 export const TeamSection: React.FC = () => {
   return (
     <Section
-      maxWidth={false}
+
       sx={{
         py: { xs: 6, md: 10 },
         backgroundColor: "grey.50",
