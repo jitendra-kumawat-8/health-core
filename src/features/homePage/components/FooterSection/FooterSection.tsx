@@ -15,11 +15,6 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
     about: [
       { label: "About Us", href: ROUTES.ABOUT },
       { label: "Our Services", href: ROUTES.SERVICES },
-      { label: "Contact", href: ROUTES.CONTACT },
-    ],
-    legal: [
-      { label: "Privacy Policy", href: ROUTES.PRIVACY },
-      { label: "Terms of Service", href: ROUTES.TERMS },
     ],
   };
 
@@ -90,44 +85,6 @@ export const FooterSection: React.FC<FooterSectionProps> = ({
             </Box>
           </Grid>
 
-          <Grid item xs={12} sm={6} md={4}>
-            <Typography
-              variant="h6"
-              component="h4"
-              gutterBottom
-              sx={{
-                fontWeight: 600,
-                mb: 2,
-              }}
-            >
-              Legal
-            </Typography>
-            <Box
-              component="nav"
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                gap: 1,
-              }}
-            >
-              {footerLinks.legal.map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  color="inherit"
-                  underline="hover"
-                  sx={{
-                    color: "grey.400",
-                    "&:hover": {
-                      color: "primary.light",
-                    },
-                  }}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </Box>
-          </Grid>
         </Grid>
 
         <Box

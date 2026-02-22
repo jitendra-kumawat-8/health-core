@@ -32,23 +32,11 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, iconSize }) =
           transform: "translateY(-4px)",
           backgroundColor: "primary.main",
           boxShadow: "0 8px 24px rgba(31, 122, 140, 0.3)",
-          "& .service-icon svg circle[fill]": {
-            fill: "rgba(255,255,255,0.2)",
+          "& .service-icon .icon-bg": {
+            backgroundColor: "rgba(255,255,255,0.2)",
           },
-          "& .service-icon svg path[fill]:not([fill='none']):not([fill='#FFFFFF'])": {
-            fill: "#FFFFFF",
-          },
-          "& .service-icon svg path[stroke]": {
-            stroke: "#FFFFFF",
-          },
-          "& .service-icon svg rect[fill]:not([fill='none']):not([fill='#FFFFFF'])": {
-            fill: "#FFFFFF",
-          },
-          "& .service-icon svg rect[stroke]": {
-            stroke: "rgba(255,255,255,0.7)",
-          },
-          "& .service-icon svg polyline": {
-            stroke: "#FFFFFF",
+          "& .service-icon .MuiSvgIcon-root": {
+            color: "#FFFFFF",
           },
           "& .service-title": {
             color: "#FFFFFF",

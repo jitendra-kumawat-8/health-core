@@ -84,7 +84,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           primaryCTA={primaryCTA}
           secondaryCTA={secondaryCTA}
           primaryLink={ROUTES.BOOKING}
-          secondaryLink={ROUTES.CONTACT}
+          secondaryLink={ROUTES.ABOUT}
           onPrimaryClick={onBookDoctor}
           onSecondaryClick={onTalkToUs}
         />

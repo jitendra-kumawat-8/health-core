@@ -49,16 +49,44 @@ export default async function handler(
       });
     }
 
-    // Prepare data for Google Sheets
+    const formatTimestamp = (date: Date) =>
+      date.toLocaleString("en-IN", {
+        dateStyle: "medium",
+        timeStyle: "short",
+        timeZone: "Asia/Kolkata",
+      });
+
+    const formatDate = (raw: string) => {
+      if (!raw) return "";
+      const d = new Date(raw);
+      if (isNaN(d.getTime())) return raw;
+      return d.toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+        timeZone: "Asia/Kolkata",
+      });
+    };
+
+    const formatTime = (raw: string) => {
+      if (!raw) return "";
+      const [h, m] = raw.split(":");
+      if (!h || !m) return raw;
+      const hour = parseInt(h, 10);
+      const ampm = hour >= 12 ? "PM" : "AM";
+      const h12 = hour % 12 || 12;
+      return `${h12}:${m} ${ampm}`;
+    };
+
     const bookingRow: BookingRow = {
-      Timestamp: new Date().toISOString(),
+      Timestamp: formatTimestamp(new Date()),
       "Patient Name": bookingData.patientName,
       "Patient Age": bookingData.patientAge,
       Gender: bookingData.gender,
       "Service Type": bookingData.serviceType,
       Diagnosis: bookingData.diagnosis,
-      "Visit Date": bookingData.visitDate || "",
-      "Visit Time": bookingData.visitTime || "",
+      "Visit Date": formatDate(bookingData.visitDate),
+      "Visit Time": formatTime(bookingData.visitTime),
       "Preferred Hospital": bookingData.preferredHospital || "",
       Address: bookingData.address,
       "Phone Number": bookingData.phoneNumber,

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useForm, FormProvider } from "react-hook-form";
+import { CircularProgress } from "@mui/material";
+import {
+  LocalHospital,
+  Send,
+  CalendarMonth,
+  Business,
+} from "@mui/icons-material";
 import HFTextField from "../../../../../components/HFComponents/HFTextField";
 import HFRadio from "../../../../../components/HFComponents/HFRadio";
 import HFAutocomplete from "../../../../../components/HFComponents/HFAutocomplete";
@@ -12,52 +19,6 @@ import {
 } from "./constants";
 import HFDatePicker from "@/components/HFComponents/HFDatePicker";
 import HFTimePicker from "@/components/HFComponents/HFTimePicker";
-
-const HospitalIcon = ({ className = "w-7 h-7" }: { className?: string }) => (
-  <svg
-    className={className}
-    fill="currentColor"
-    viewBox="0 0 24 24"
-    aria-hidden
-  >
-    <path d="M19 3H5c-1.1 0-1.99.9-1.99 2L3 19c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-1 11h-4v4h-4v-4H6v-4h4V6h4v4h4v4z" />
-  </svg>
-);
-
-const SendIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg
-    className={className}
-    fill="currentColor"
-    viewBox="0 0 24 24"
-    aria-hidden
-  >
-    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-  </svg>
-);
-
-const Spinner = ({ className = "w-5 h-5" }: { className?: string }) => (
-  <svg
-    className={`animate-spin ${className}`}
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    aria-hidden
-  >
-    <circle
-      className="opacity-25"
-      cx="12"
-      cy="12"
-      r="10"
-      stroke="currentColor"
-      strokeWidth="4"
-    />
-    <path
-      className="opacity-75"
-      fill="currentColor"
-      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-    />
-  </svg>
-);
 
 export interface BookingFormProps {
   onSubmitSuccess?: () => void;
@@ -91,14 +52,12 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSubmitSuccess }) => 
 
   const { handleSubmit, reset, watch, setValue } = methods;
 
-  // Prefill serviceType from query param once router is ready
   useEffect(() => {
     if (router.isReady && typeof router.query.service === "string") {
       setValue("serviceType", router.query.service);
     }
   }, [router.isReady, router.query.service, setValue]);
 
-  // Helper to find option object from value
   const findOption = (value: string, options: any[]) => {
     if (!value) return null;
     return options.find((opt) => opt.value === value) || null;
@@ -135,7 +94,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSubmitSuccess }) => 
     return (
       <div className="rounded-xl shadow-lg bg-white p-6 md:p-8 text-center">
         <div className="mb-6">
-          <HospitalIcon className="w-16 h-16 text-blue-600 mx-auto mb-4" />
+          <LocalHospital sx={{ fontSize: 64, color: "#2563eb", mb: 2 }} />
         </div>
         <h2 className="text-2xl font-semibold text-gray-900 mb-2">
           Booking Request Submitted
@@ -174,7 +133,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSubmitSuccess }) => 
           {/* Patient Details Section */}
           <div className="mb-8">
             <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <HospitalIcon className="w-7 h-7 text-blue-600" />
+              <LocalHospital sx={{ fontSize: 28, color: "#2563eb" }} />
               Patient Details
             </h2>
             <div className="grid grid-cols-12 gap-6">
@@ -278,10 +237,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSubmitSuccess }) => 
           {/* Visit Preference Section */}
           <div className="mb-8">
             <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <svg className="w-7 h-7 text-blue-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z" />
-                <circle cx="12" cy="15" r="2" fill="currentColor" />
-              </svg>
+              <CalendarMonth sx={{ fontSize: 28, color: "#2563eb" }} />
               Visit Preference
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -330,9 +286,7 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSubmitSuccess }) => 
           {/* Hospital Preference Section */}
           <div className="mb-8">
             <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-4 flex items-center gap-2">
-              <svg className="w-7 h-7 text-blue-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-                <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 4h2v5l-1-.75L9 9V4zm9 16H6V4h1v9l3-2.25L13 13V4h5v16z" />
-              </svg>
+              <Business sx={{ fontSize: 28, color: "#2563eb" }} />
               Hospital Preference
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
@@ -358,12 +312,12 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSubmitSuccess }) => 
             >
               {isSubmitting ? (
                 <>
-                  <Spinner className="w-5 h-5 text-white" />
+                  <CircularProgress size={20} sx={{ color: "white" }} />
                   Submitting...
                 </>
               ) : (
                 <>
-                  <SendIcon />
+                  <Send sx={{ fontSize: 20 }} />
                   Submit Booking Request
                 </>
               )}

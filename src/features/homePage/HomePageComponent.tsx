@@ -2,6 +2,7 @@ import React from "react";
 import {
   HeroSection,
   ServicesSection,
+  TeamSection,
   SpeedHighlightsSection,
   HowItWorksSection,
   TrustSection,
@@ -17,7 +18,8 @@ export const HomePageComponent: React.FC<HomePageComponentProps> = () => {
     <>
       <HeroSection />
       <ServicesSection />
-      <SpeedHighlightsSection />
+      <TeamSection />
+      {/* <SpeedHighlightsSection /> */}
       <HowItWorksSection />
       <TrustSection />
       <CTASection />

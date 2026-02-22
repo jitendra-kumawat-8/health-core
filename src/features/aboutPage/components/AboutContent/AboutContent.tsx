@@ -4,6 +4,10 @@ import Image from "next/image";
 import {
   Favorite,
   Visibility,
+  VerifiedUser,
+  Cottage,
+  FactCheck,
+  SupportAgent,
 } from "@mui/icons-material";
 import { Section } from "../../../../components/layout/Section";
 import {
@@ -15,50 +19,18 @@ import {
   VISION,
 } from "./constants";
 
-// Unique SVG icons for each promise card
 const PROMISE_ICONS: Record<string, React.ReactNode> = {
   "Verified & Trusted Professionals": (
-    // Shield with checkmark
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M12 2L3 7v5c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-9-5z" fill="#1F7A8C" />
-      <path d="M10 15.5l-3.5-3.5 1.41-1.41L10 12.67l5.59-5.59L17 8.5l-7 7z" fill="#FFFFFF" />
-    </svg>
+    <VerifiedUser sx={{ fontSize: 28, color: "#1F7A8C" }} />
   ),
   "Care That Comes Home": (
-    // House with heart
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path d="M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3z" fill="#4CAF50" />
-      <path
-        d="M12 13.5c-.55-.55-2-1.5-2-2.5a1.5 1.5 0 013 0 1.5 1.5 0 013 0c0 1-.95 1.95-2 2.5L12 15l-2-1.5z"
-        fill="#FFFFFF"
-      />
-    </svg>
+    <Cottage sx={{ fontSize: 28, color: "#4CAF50" }} />
   ),
   "Transparent & Hassle-Free": (
-    // Clipboard with lines
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <rect x="5" y="3" width="14" height="18" rx="2" fill="#D4AF37" />
-      <rect x="8" y="2" width="8" height="3" rx="1.5" fill="#B8941F" />
-      <rect x="8" y="9" width="8" height="1.5" rx="0.75" fill="#FFFFFF" />
-      <rect x="8" y="12.5" width="6" height="1.5" rx="0.75" fill="#FFFFFF" />
-      <rect x="8" y="16" width="5" height="1.5" rx="0.75" fill="#FFFFFF" />
-    </svg>
+    <FactCheck sx={{ fontSize: 28, color: "#D4AF37" }} />
   ),
   "Care Beyond the Appointment": (
-    // Handshake / connected hearts
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <circle cx="12" cy="12" r="10" fill="#1F7A8C" opacity="0.15" />
-      <path
-        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-        fill="#D4AF37"
-      />
-      <path
-        d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"
-        fill="none"
-        stroke="#B8941F"
-        strokeWidth="0.5"
-      />
-    </svg>
+    <SupportAgent sx={{ fontSize: 28, color: "#D4AF37" }} />
   ),
 };
 
@@ -107,33 +79,33 @@ export const AboutContent: React.FC = () => {
         {/* Blended background image */}
         <Box
           sx={{
-            position: "absolute",
-            top: 0,
-            right: 0,
-            bottom: 0,
-            width: { xs: "100%", md: "50%" },
-            pointerEvents: "none",
-            opacity: { xs: 0.1, md: 0.85 },
-            maskImage: {
-              xs: "none",
-              md: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 100%)",
-            },
-            WebkitMaskImage: {
-              xs: "none",
-              md: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 100%)",
-            },
+          position: "absolute",
+          top: 0,
+          left: 0,
+          bottom: 0,
+          width: { xs: "100%", md: "50%" },
+          pointerEvents: "none",
+          opacity: { xs: 0.1, md: 0.85 },
+          maskImage: {
+            xs: "none",
+            md: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 100%)",
+          },
+          WebkitMaskImage: {
+            xs: "none",
+            md: "linear-gradient(to left, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 100%)",
+          },
           }}
         >
           <Image
             src="/assets/about-us-what-we-believe.png"
             alt=""
             fill
-            style={{ objectFit: "cover", objectPosition: "center right" }}
+            style={{ objectFit: "cover", objectPosition: "center left" }}
             sizes="(max-width: 768px) 100vw, 50vw"
           />
         </Box>
 
-        <Box sx={{ maxWidth: "600px", position: "relative", zIndex: 1 }}>
+        <Box sx={{ maxWidth: "600px", position: "relative", zIndex: 1, ml: { md: "auto" } }}>
           <Typography
             variant="h3"
             component="h2"
@@ -256,9 +228,43 @@ export const AboutContent: React.FC = () => {
       {/* Why "Because We Care" */}
       <Section
         maxWidth="lg"
-        sx={{ py: { xs: 4, md: 6 }, backgroundColor: "grey.50" }}
+        sx={{
+          py: { xs: 4, md: 6 },
+          backgroundColor: "grey.50",
+          position: "relative",
+          overflow: "hidden",
+        }}
       >
-        <Box sx={{ maxWidth: "800px" }}>
+        {/* Blended background image — right side */}
+        <Box
+          sx={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            width: { xs: "100%", md: "50%" },
+            pointerEvents: "none",
+            opacity: { xs: 0.1, md: 0.85 },
+            maskImage: {
+              xs: "none",
+              md: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 100%)",
+            },
+            WebkitMaskImage: {
+              xs: "none",
+              md: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 20%, rgba(0,0,0,0.8) 50%, black 100%)",
+            },
+          }}
+        >
+          <Image
+            src="/assets/about-us-because-we-care.png"
+            alt=""
+            fill
+            style={{ objectFit: "cover", objectPosition: "center right" }}
+            sizes="(max-width: 768px) 100vw, 50vw"
+          />
+        </Box>
+
+        <Box sx={{ maxWidth: "600px", position: "relative", zIndex: 1 }}>
           <Typography
             variant="h3"
             component="h2"

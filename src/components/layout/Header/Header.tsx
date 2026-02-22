@@ -60,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
             <Image
               src="/assets/logo.png"
               alt="Ashokam Homecare Logo"
-              width={54}
+              width={74}
               height={72}
               priority
             />
@@ -110,20 +110,7 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
                 },
               }}
             >
-              About
-            </Button>
-            <Button
-              component={Link}
-              href={ROUTES.CONTACT}
-              sx={{
-                color: "text.primary",
-                fontWeight: 500,
-                "&:hover": {
-                  bgcolor: "grey.50",
-                },
-              }}
-            >
-              Contact
+              About Us
             </Button>
           </Box>
 

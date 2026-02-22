@@ -1,4 +1,4 @@
-import { Phone, Email, AccessTime } from "@mui/icons-material";
+import { Phone, AccessTime } from "@mui/icons-material";
 
 export interface ContactMethod {
   id: string;
@@ -13,15 +13,8 @@ export const CONTACT_METHODS: ContactMethod[] = [
     id: "phone",
     icon: Phone,
     label: "Phone",
-    value: "+1 (555) 123-4567",
+    value: "+91 85277 23628",
     description: "Call us anytime",
-  },
-  {
-    id: "email",
-    icon: Email,
-    label: "Email",
-    value: "support@ashokamhomecare.com",
-    description: "Send us a message",
   },
   {
     id: "availability",

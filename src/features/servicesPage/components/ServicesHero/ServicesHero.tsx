@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import Image from "next/image";
 import { Section } from "../../../../components/layout/Section";
 import { SERVICES_HERO_CONTENT } from "./constants";
 
@@ -19,7 +20,8 @@ export const ServicesHero: React.FC<ServicesHeroProps> = ({
         position: "relative",
         py: { xs: 8, md: 12 },
         overflow: "hidden",
-        background: "linear-gradient(135deg, rgba(31, 122, 140, 0.08) 0%, rgba(76, 175, 80, 0.06) 50%, rgba(255, 255, 255, 1) 100%)",
+        background:
+          "linear-gradient(135deg, rgba(31, 122, 140, 0.08) 0%, rgba(76, 175, 80, 0.06) 50%, rgba(255, 255, 255, 1) 100%)",
         "&::before": {
           content: '""',
           position: "absolute",
@@ -27,28 +29,49 @@ export const ServicesHero: React.FC<ServicesHeroProps> = ({
           left: 0,
           right: 0,
           bottom: 0,
-          background: "radial-gradient(circle at 20% 50%, rgba(31, 122, 140, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(76, 175, 80, 0.08) 0%, transparent 50%)",
-          pointerEvents: "none",
-        },
-        "&::after": {
-          content: '""',
-          position: "absolute",
-          top: "-50%",
-          right: "-10%",
-          width: "600px",
-          height: "600px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(31, 122, 140, 0.05) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle at 20% 50%, rgba(31, 122, 140, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(76, 175, 80, 0.08) 0%, transparent 50%)",
           pointerEvents: "none",
         },
       }}
     >
+      {/* Background hero image — blended into the section */}
+      <Box
+        sx={{
+          position: "absolute",
+          top: 0,
+          right: 0,
+          bottom: 0,
+          width: { xs: "100%", md: "55%" },
+          pointerEvents: "none",
+          opacity: { xs: 0.15, md: 0.9 },
+          maskImage: {
+            xs: "none",
+            md: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 10%, rgba(0,0,0,0.8) 50%, black 100%)",
+          },
+          WebkitMaskImage: {
+            xs: "none",
+            md: "linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 10%, rgba(0,0,0,0.8) 50%, black 100%)",
+          },
+        }}
+      >
+        <Image
+          src="/assets/our-services-hero.png"
+          alt=""
+          fill
+          priority
+          style={{ objectFit: "cover", objectPosition: "center right" }}
+          sizes="(max-width: 768px) 100vw, 55vw"
+        />
+      </Box>
+
+      {/* Content — sits above the image */}
       <Box
         sx={{
           position: "relative",
           zIndex: 1,
           textAlign: { xs: "center", md: "left" },
-          maxWidth: { md: "720px" },
+          maxWidth: { md: "560px" },
           mx: { xs: "auto", md: 0 },
         }}
       >
@@ -86,4 +109,3 @@ export const ServicesHero: React.FC<ServicesHeroProps> = ({
     </Section>
   );
 };
-

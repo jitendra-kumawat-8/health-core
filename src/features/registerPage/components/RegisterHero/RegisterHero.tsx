@@ -60,7 +60,7 @@ export const RegisterHero: React.FC<RegisterHeroProps> = ({
           alt=""
           fill
           priority
-          style={{ objectFit: "cover", objectPosition: "center right" }}
+          style={{ objectFit: "cover", objectPosition: "top right" }}
           sizes="(max-width: 768px) 100vw, 55vw"
         />
       </Box>

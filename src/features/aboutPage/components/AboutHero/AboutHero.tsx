@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
+import { MedicalServices } from "@mui/icons-material";
 import Image from "next/image";
 import { Section } from "../../../../components/layout/Section";
 import { ABOUT_HERO_CONTENT } from "./constants";
@@ -76,6 +77,20 @@ export const AboutHero: React.FC<AboutHeroProps> = ({
         }}
       >
         <Typography
+          variant="overline"
+          component="span"
+          sx={{
+            color: "primary.main",
+            fontWeight: 700,
+            letterSpacing: 2,
+            fontSize: { xs: "0.75rem", md: "0.875rem" },
+            mb: 1,
+            display: "block",
+          }}
+        >
+          {ABOUT_HERO_CONTENT.label}
+        </Typography>
+        <Typography
           variant="h1"
           component="h1"
           gutterBottom
@@ -90,42 +105,6 @@ export const AboutHero: React.FC<AboutHeroProps> = ({
           {headline}
         </Typography>
         <Typography
-          variant="body1"
-          component="p"
-          sx={{
-            fontStyle: "italic",
-            fontWeight: 600,
-            color: "secondary.dark",
-            fontSize: { xs: "0.875rem", md: "1rem" },
-            mb: 3,
-          }}
-        >
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            aria-hidden="true"
-            style={{
-              display: "inline-block",
-              verticalAlign: "middle",
-              marginRight: "6px",
-              flexShrink: 0,
-            }}
-          >
-            <path
-              d="M19 8C19 4.69 16.31 2 13 2C9.69 2 7 4.69 7 8C7 9.1 5.1 10 4 10V12C5.1 12 7 12.9 7 14V16C7 18.21 8.79 20 11 20H13"
-              stroke="#1F7A8C"
-              strokeWidth="2"
-              strokeLinecap="round"
-              fill="none"
-            />
-            <circle cx="17" cy="17" r="4" fill="#4CAF50" />
-            <circle cx="17" cy="17" r="2" fill="#FFFFFF" />
-          </svg>
-          {ABOUT_HERO_CONTENT.subtitle}
-        </Typography>
-        <Typography
           variant="h6"
           component="p"
           sx={{
@@ -134,9 +113,44 @@ export const AboutHero: React.FC<AboutHeroProps> = ({
             maxWidth: "36rem",
             lineHeight: 1.6,
             fontWeight: 400,
+            mb: 2,
           }}
         >
           {subtext}
+        </Typography>
+        <Typography
+          variant="body1"
+          component="p"
+          sx={{
+            fontWeight: 600,
+            fontStyle: "italic",
+            color: "secondary.dark",
+            fontSize: { xs: "1rem", md: "1.1rem" },
+            mb: 3,
+          }}
+        >
+          {ABOUT_HERO_CONTENT.beliefLine}
+        </Typography>
+        <Typography
+          variant="body2"
+          component="p"
+          sx={{
+            fontStyle: "italic",
+            fontWeight: 500,
+            color: "text.secondary",
+            fontSize: { xs: "0.875rem", md: "0.95rem" },
+          }}
+        >
+          <MedicalServices
+            sx={{
+              fontSize: 18,
+              color: "#1F7A8C",
+              verticalAlign: "middle",
+              mr: 0.75,
+              flexShrink: 0,
+            }}
+          />
+          {ABOUT_HERO_CONTENT.subtitle}
         </Typography>
       </Box>
     </Section>

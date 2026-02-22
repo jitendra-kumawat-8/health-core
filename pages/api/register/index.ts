@@ -45,9 +45,15 @@ export default async function handler(
       });
     }
 
-    // Prepare data for Google Sheets
+    const formatTimestamp = (date: Date) =>
+      date.toLocaleString("en-IN", {
+        dateStyle: "medium",
+        timeStyle: "short",
+        timeZone: "Asia/Kolkata",
+      });
+
     const registrationRow: RegistrationRow = {
-      Timestamp: new Date().toISOString(),
+      Timestamp: formatTimestamp(new Date()),
       "Full Name": data.fullName,
       "Phone Number": data.phoneNumber,
       Email: data.email,

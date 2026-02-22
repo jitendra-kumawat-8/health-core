@@ -275,8 +275,9 @@ const theme = createTheme({
             fontFamily: fontFamily.primary,
             borderRadius: "12px",
             background: palette.background.paper,
-            "& .MuiOutlinedInput-input": {
-              padding: "12px 16px",
+            padding: "12px 16px !important",
+            "& .MuiAutocomplete-input": {
+              padding: "0 !important",
               fontSize: "14px",
             },
             "& fieldset": {

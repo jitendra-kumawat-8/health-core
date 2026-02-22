@@ -95,7 +95,7 @@ export const CTASection: React.FC<CTASectionProps> = ({
                 variant="outlined"
                 size="large"
                 component={Link}
-                href={ROUTES.CONTACT}
+                href={ROUTES.ABOUT}
                 onClick={onContactSupport}
                 sx={{
                   minWidth: { xs: "100%", sm: "200px" },
