@@ -18,9 +18,9 @@ export const HomePageComponent: React.FC<HomePageComponentProps> = () => {
     <>
       <HeroSection />
       <ServicesSection />
+      <HowItWorksSection />
       <TeamSection />
       {/* <SpeedHighlightsSection /> */}
-      <HowItWorksSection />
       <TrustSection />
       <CTASection />
     </>

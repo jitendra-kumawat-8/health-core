@@ -37,12 +37,13 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
         transition: "all 0.3s ease-in-out",
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ gap: 2 }}>
         <Toolbar
           disableGutters
           sx={{
-            py: 1,
+            py: 1.5,
             minHeight: { xs: 64, md: 72 },
+            gap: 1,
           }}
         >
           <Box
@@ -60,8 +61,8 @@ export const Header: React.FC<HeaderProps> = ({ transparent = false }) => {
             <Image
               src="/assets/logo.png"
               alt="Ashokam Homecare Logo"
-              width={74}
-              height={72}
+              width={90}
+              height={90}
               priority
             />
           </Box>

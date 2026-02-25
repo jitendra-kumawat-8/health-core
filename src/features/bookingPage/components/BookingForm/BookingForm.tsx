@@ -221,9 +221,9 @@ export const BookingForm: React.FC<BookingFormProps> = ({ onSubmitSuccess }) => 
               <div className="col-span-12">
                 <HFTextField
                   name="diagnosis"
-                  label="Primary Condition / Diagnosis *"
-                  placeholder="Enter primary condition or diagnosis"
-                  rules={{ required: "Diagnosis is required" }}
+                  label="Primary Condition / Symptoms *"
+                  placeholder="Enter primary condition or symptoms"
+                  rules={{ required: "Condition or symptoms is required" }}
                   componentProps={{
                     size: "medium",
                     multiline: true,

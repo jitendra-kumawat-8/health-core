@@ -73,7 +73,10 @@ const TeamCarousel: React.FC = () => {
           delay: 4000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
+          stopOnLastSlide: true,
+
         }}
+        autoHeight={true}
         navigation={{
           prevEl: ".team-prev",
           nextEl: ".team-next",
@@ -84,9 +87,10 @@ const TeamCarousel: React.FC = () => {
           900: { slidesPerView: 3 },
           1200: { slidesPerView: 3 },
         }}
+
       >
         {TEAM_MEMBERS.map((member) => (
-          <SwiperSlide key={member.id}>
+          <SwiperSlide key={member.id} style={{ height: 'auto' }}>
             <Box
               sx={{
                 borderRadius: "16px",
