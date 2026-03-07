@@ -18,6 +18,12 @@ const TeamCarousel: React.FC = () => {
           px: { xs: 0.5, md: 1 },
           pb: 6,
         },
+        "& .swiper-wrapper": {
+          alignItems: "stretch",
+        },
+        "& .swiper-slide": {
+          height: "auto",
+        },
         "& .swiper-pagination": {
           bottom: "0px !important",
         },
@@ -74,9 +80,8 @@ const TeamCarousel: React.FC = () => {
           disableOnInteraction: false,
           pauseOnMouseEnter: true,
           stopOnLastSlide: true,
-
         }}
-        autoHeight={true}
+        autoHeight={false}
         navigation={{
           prevEl: ".team-prev",
           nextEl: ".team-next",
@@ -90,7 +95,7 @@ const TeamCarousel: React.FC = () => {
 
       >
         {TEAM_MEMBERS.map((member) => (
-          <SwiperSlide key={member.id} style={{ height: 'auto' }}>
+          <SwiperSlide key={member.id} style={{ height: "auto", display: "flex" }}>
             <Box
               sx={{
                 borderRadius: "16px",
@@ -102,6 +107,7 @@ const TeamCarousel: React.FC = () => {
                 display: "flex",
                 flexDirection: "column",
                 height: "100%",
+                width: "100%",
                 "&:hover": {
                   transform: "translateY(-4px)",
                   boxShadow: "0 12px 32px rgba(31, 122, 140, 0.12)",
