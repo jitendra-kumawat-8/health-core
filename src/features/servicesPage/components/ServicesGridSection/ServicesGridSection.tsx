@@ -5,6 +5,7 @@ import {
   Grid,
   Card,
   CardContent,
+  Divider,
 } from "@mui/material";
 import { Section } from "../../../../components/layout/Section";
 import {
@@ -116,21 +117,28 @@ export const ServicesGridSection: React.FC<ServicesGridSectionProps> = ({
                   >
                     {service.description}
                   </Typography>
-                  <Box
-                    sx={{
-                      textAlign: "center",
-                    }}
-                  >
-                    <Typography
-                      variant="button"
-                      sx={{
-                        color: "primary.main",
-                        fontWeight: 600,
-                      }}
-                    >
-                      Learn more
-                    </Typography>
-                  </Box>
+                  {service.pricing && service.pricing.length > 0 && (
+                    <Box sx={{ mt: 2, pt: 1.5, borderTop: "1px solid", borderColor: "divider" }}>
+                      {service.pricing.map((item, idx) => (
+                        <Box
+                          key={idx}
+                          sx={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            alignItems: "center",
+                            py: 0.4,
+                          }}
+                        >
+                          <Typography variant="caption" sx={{ color: "text.secondary", fontSize: "0.75rem" }}>
+                            {item.label}
+                          </Typography>
+                          <Typography variant="caption" sx={{ fontWeight: 700, color: "primary.main", fontSize: "0.8rem" }}>
+                            {item.price}
+                          </Typography>
+                        </Box>
+                      ))}
+                    </Box>
+                  )}
                 </CardContent>
               </Card>
             </Grid>

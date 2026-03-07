@@ -1,9 +1,10 @@
-// Registration API endpoint - writes to Google Sheets (2nd sheet)
+// Registration API endpoint - writes to Google Sheets (2nd sheet) & sends email notification
 import type { NextApiRequest, NextApiResponse } from "next";
 import {
   appendRegistrationToSheet,
   type RegistrationRow,
 } from "../../../src/lib/googleSheets/registrations";
+import { sendRegistrationNotification } from "../../../src/lib/email";
 
 export interface RegistrationRequest {
   fullName: string;
@@ -64,6 +65,9 @@ export default async function handler(
 
     // Write to Google Sheets (Registrations sheet)
     await appendRegistrationToSheet(registrationRow);
+
+    // Send email notification (non-blocking — don't fail the request if email fails)
+    sendRegistrationNotification(data);
 
     return res.status(200).json({
       message: "Registration submitted successfully",

@@ -44,6 +44,15 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, iconSize }) =
           "& .service-description": {
             color: "rgba(255,255,255,0.85)",
           },
+          "& .service-pricing": {
+            borderColor: "rgba(255,255,255,0.2)",
+          },
+          "& .pricing-label": {
+            color: "rgba(255,255,255,0.75)",
+          },
+          "& .pricing-value": {
+            color: "#FFFFFF",
+          },
           "& .book-now-ribbon": {
             opacity: 1,
             transform: "rotate(45deg) scale(1)",
@@ -96,6 +105,54 @@ export const ServiceCard: React.FC<ServiceCardProps> = ({ service, iconSize }) =
         >
           {service.description}
         </Typography>
+        {service.pricing && service.pricing.length > 0 && (
+          <Box
+            className="service-pricing"
+            sx={{
+              mt: 2,
+              pt: 1.5,
+              borderTop: "1px solid",
+              borderColor: "divider",
+              transition: "border-color 0.3s ease",
+            }}
+          >
+            {service.pricing.map((item, idx) => (
+              <Box
+                key={idx}
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  py: 0.4,
+                }}
+              >
+                <Typography
+                  variant="caption"
+                  className="pricing-label"
+                  sx={{
+                    color: "text.secondary",
+                    fontSize: "0.75rem",
+                    transition: "color 0.3s ease",
+                  }}
+                >
+                  {item.label}
+                </Typography>
+                <Typography
+                  variant="caption"
+                  className="pricing-value"
+                  sx={{
+                    fontWeight: 700,
+                    color: "primary.main",
+                    fontSize: "0.8rem",
+                    transition: "color 0.3s ease",
+                  }}
+                >
+                  {item.price}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        )}
       </CardContent>
       <Box
         className="book-now-ribbon"

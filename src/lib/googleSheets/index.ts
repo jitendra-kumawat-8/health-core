@@ -1,8 +1,6 @@
 import { google } from "googleapis";
 
-// Extract sheet ID from the Google Sheets URL
-// URL format: https://docs.google.com/spreadsheets/d/{SHEET_ID}/edit
-export const GOOGLE_SHEET_ID = "18G6ewFA80FKaHqFX9q4eezvYXwZM82ea-JpdNJ3Hv08";
+export const GOOGLE_SHEET_ID = process.env.GOOGLE_SHEET_ID || "";
 export const SHEET_NAME = "ICU_Bookings"; // Default sheet name - will use first sheet if this doesn't exist
 
 // Expected column headers in exact order

@@ -1,6 +1,7 @@
-// Booking API endpoint - writes to Google Sheets
+// Booking API endpoint - writes to Google Sheets & sends email notification
 import type { NextApiRequest, NextApiResponse } from "next";
 import { appendBookingToSheet, type BookingRow } from "../../../src/lib/googleSheets";
+import { sendBookingNotification } from "../../../src/lib/email";
 
 export interface BookingRequest {
   patientName: string;
@@ -96,6 +97,9 @@ export default async function handler(
 
     // Write to Google Sheets
     await appendBookingToSheet(bookingRow);
+
+    // Send email notification (non-blocking — don't fail the request if email fails)
+    sendBookingNotification(bookingData);
 
     return res.status(200).json({
       message: "Booking request submitted successfully",

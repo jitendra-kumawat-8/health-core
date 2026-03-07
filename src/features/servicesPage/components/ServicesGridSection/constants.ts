@@ -1,54 +1,84 @@
 import {
-  LocalHospital,
+  MedicalServices,
+  HealthAndSafety,
+  Accessibility,
   Healing,
-  Science,
-  LocalPharmacy,
-  Assignment,
+  MonitorHeart,
+  Favorite,
 } from "@mui/icons-material";
 import { SvgIconProps } from "@mui/material";
+
+export interface PricingItem {
+  label: string;
+  price: string;
+}
 
 export interface ServicesPageService {
   id: string;
   title: string;
   description: string;
   icon: React.ComponentType<SvgIconProps>;
+  pricing?: PricingItem[];
 }
 
 export const SERVICES_PAGE_SERVICES: ServicesPageService[] = [
   {
-    id: "doctor-at-home",
-    title: "Doctor at Home",
+    id: "doctor-visit",
+    title: "Doctor Visit",
     description:
-      "Consult experienced doctors from the comfort of your home for non‑emergency care.",
-    icon: LocalHospital,
+      "Expert doctors visit your home for consultations, check-ups, and follow-up care.",
+    icon: MedicalServices,
+    pricing: [
+      { label: "General Practitioner", price: "₹1,499" },
+      { label: "Physician", price: "₹2,999" },
+    ],
   },
   {
     id: "nursing-care",
     title: "Nursing Care",
     description:
-      "Qualified nurses for post‑operative care, chronic conditions, and recovery support.",
+      "Professional nursing services for post-operative, chronic, and daily medical care at home.",
+    icon: HealthAndSafety,
+    pricing: [
+      { label: "Injections (30 mins)", price: "₹499" },
+      { label: "Foleys Catheter", price: "₹999" },
+      { label: "Ryles Tube", price: "₹999" },
+    ],
+  },
+  {
+    id: "physiotherapy",
+    title: "Physiotherapy",
+    description:
+      "At-home physiotherapy sessions for rehabilitation, mobility, and pain management.",
+    icon: Accessibility,
+    pricing: [
+      { label: "One Session", price: "₹599" },
+    ],
+  },
+  {
+    id: "dresser",
+    title: "Dresser",
+    description:
+      "Trained dressers for daily wound care, injections, and post-surgical dressing changes.",
     icon: Healing,
+    pricing: [
+      { label: "Small Dressing", price: "₹299" },
+      { label: "Large Dressing", price: "₹499" },
+    ],
   },
   {
-    id: "diagnostics",
-    title: "Diagnostics at Home",
+    id: "icu-at-home",
+    title: "ICU at Home",
     description:
-      "Lab tests, sample collection, and basic diagnostics done safely at home.",
-    icon: Science,
+      "Full ICU setup at home — ventilator, monitors, and round-the-clock nursing support.",
+    icon: MonitorHeart,
   },
   {
-    id: "medicine-delivery",
-    title: "Medicine Delivery",
+    id: "care-and-wellness",
+    title: "Care and Wellness",
     description:
-      "Fast, reliable home delivery for your prescribed medications and refills.",
-    icon: LocalPharmacy,
-  },
-  {
-    id: "follow-up-care",
-    title: "Follow‑up Care",
-    description:
-      "Coordinated follow‑ups so you never miss a check‑in or dosage change.",
-    icon: Assignment,
+      "Ongoing health monitoring, regular follow-ups, preventive check-ups, and holistic wellness support.",
+    icon: Favorite,
   },
 ];
 
